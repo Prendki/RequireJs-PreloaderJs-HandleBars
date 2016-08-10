@@ -44,8 +44,10 @@ define([
   'jquery',
   'templates/views',
   'preloader/preloader'
-], function($,views) {
-  $("#s_wizard").html(views.carouselWizard({data}));
+], function($,views,preloader) {
+  preloader.loadImages(data,function(data){
+    $("#s_wizard").html(views.carouselWizard({data}));
+  }
 });
 ```
 > js/template/views.js
@@ -109,11 +111,11 @@ define([
         preload.on("complete",function(){
           setTimeout(that.stopLoader, 1000);
           that.images = [];
-          ownFunction();
+          ownFunction(data);
         });
         preload.load();
       } else {
-        ownFunction();
+        ownFunction(data);
       }
     }
   }
