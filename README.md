@@ -43,7 +43,7 @@ require([
 define([
   'jquery',
   'templates/views',
-  'preloader/preloader
+  'preloader/preloader'
 ], function($,views) {
   $("#s_wizard").html(views.carouselWizard({data}));
 });
